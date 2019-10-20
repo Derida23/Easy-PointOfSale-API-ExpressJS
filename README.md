@@ -53,6 +53,9 @@ DB_HOST = 'localhost'
 DB_USER = 'root'
 DB_PASSWORD = ''
 DB_DATABASE = 'ark_weekone'
+
+PORT = 3000
+SECRET_KEY = '270400'
 ```
 ## Setup Database
 Create Database named  **ark-weekone**  :
