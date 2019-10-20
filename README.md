@@ -150,6 +150,7 @@ All API requests are made by sending a secure HTTPS request using one of the fol
 | `400` | `Error`        | There was a problem with the request    |
 
 
+
 ## Endpoints
 
 #### **Homepage**
@@ -157,14 +158,14 @@ All API requests are made by sending a secure HTTPS request using one of the fol
 - **Request** : **`GET /`**
 - **Response** :
 
-  ```
+```
     {
     "message": "Welcome to RESTfull API for Point of Sale",
     "author": "@Derida23",
     "documentation": "https://github.com/Derida23/PointOfSale-ExpressJS-API",
     "github": "github.com/Derida23"
-}
-  ```
+    }
+ ```
 
 #### **Register**
 
@@ -191,6 +192,41 @@ All API requests are made by sending a secure HTTPS request using one of the fol
     "status": 200,
     "message": "Login successfully!",
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hbWVuZXNpYSIsImlhdCI6MTU2NjAwNDI2Nn0.Pu71LkGJn9wYM6n_xk5qadXoH4DfoE1jIQq01iN_7u8"
+}
+```
+#### **CRUD Books Endpoint**
+* **Read All Books**
+  - **Request** : **`GET /books`**
+  - **Response** :
+```
+{
+    "status": 200,
+    "result": [
+        {
+            "title": "Wordl War II",
+            "desc": "The history of world war II",
+            "image_url": "cover world war II",
+            "released_at": "2019-08-03T17:00:00.000Z",
+            "genre": "History",
+            "status": "Not Available"
+        },
+        {
+            "title": "The Witcher",
+            "desc": "The Witcher is an action role-playing game developed by CD Projekt Red and published by Atari, based on the novel series of The Witcher by Polish author Andrzej Sapkowski.",
+            "image_url": "image the witcher",
+            "released_at": "2019-08-02T17:00:00.000Z",
+            "genre": "Novel",
+            "status": "Available"
+        },
+        {
+            "title": "Calculus",
+            "desc": "Mathematics hell",
+            "image_url": "image book math",
+            "released_at": "2019-08-01T17:00:00.000Z",
+            "genre": "Education",
+            "status": "Not Available"
+        }
+    ]
 }
 ```
 
