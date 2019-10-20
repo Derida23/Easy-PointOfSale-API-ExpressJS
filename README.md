@@ -148,7 +148,52 @@ All API requests are made by sending a secure HTTPS request using one of the fol
 | :---- | :------------------- | :---------------------------------------------------------------------------------- |
 | `200` | `Succes`                 | The request was successful                                                          |
 | `400` | `Error`        | There was a problem with the request    |
+
+
 ## Endpoints
+
+#### **Homepage**
+
+- **Request** : **`GET /`**
+- **Response** :
+
+  ```
+    {
+    "message": "Welcome to RESTfull API for Point of Sale",
+    "author": "@Derida23",
+    "documentation": "https://github.com/Derida23/PointOfSale-ExpressJS-API",
+    "github": "github.com/Derida23"
+}
+  ```
+
+#### **Register**
+
+- **Request** : **`POST /register`**
+- **Response** :
+
+  ```
+    {
+    "status": 200,
+    "message": "The user is successfully registered!",
+    "user": {
+        "username": "admin",
+        "password": "$2a$10$ThIm7Ra5opmjcrVq.vkN3.9J8m5wUCNPfyYBKgm3c9du2/OhY17Mu"
+    }
+  }
+  ```
+
+#### **Login**
+
+- **Request** : **`POST /login`**
+- **Response** :
+```
+{
+    "status": 200,
+    "message": "Login successfully!",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hbWVuZXNpYSIsImlhdCI6MTU2NjAwNDI2Nn0.Pu71LkGJn9wYM6n_xk5qadXoH4DfoE1jIQq01iN_7u8"
+}
+```
+
 ### A. CRUD Category Endpoint
 **1. Read All Category**
  -   **Request**  :  **`GET /category`**
