@@ -1,7 +1,7 @@
 const connection = require('../Configs/connect');
 
 exports.fPagination = (req) => {
-  let content = Number(req.query.content)  || 10;
+  let content = Number(req.query.content)  || 20;
   let page = Number(req.query.page) || 1;
   let offset = content * (page - 1);
 
@@ -44,6 +44,8 @@ exports.fSorting = (req, sql) => {
     sql += ' ORDER BY date_update'
   } else if (order == 'category'){
     sql += ' ORDER BY category_name'
+  } else {
+    sql += ' ORDER BY id'
   }
 
   if(sort == 'ASC'){

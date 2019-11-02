@@ -23,7 +23,7 @@ REST (REpresentational State Transfer) is a web-based communication architecture
 On the REST architecture, the REST server provides resources (resources / data) and the REST client accesses and displays these resources for future use. Each resource is identified by URIs (Universal Resource Identifiers) or global IDs. These resources are represented in text format, JSON or XML. In general, the format uses JSON and XML.
 
 ## Built With
-[![Express.js](https://img.shields.io/badge/express-4.17.1-yellow?style=rounded-square)](https://expressjs.com/en/starter/installing.html) [![Node.js](https://img.shields.io/badge/npm-6.9.0-greenstyle?rounded-square)](https://nodejs.org/) [![MySQL](https://img.shields.io/badge/mysql-2.17.1-blue?rounded-square)](https://www.npmjs.com/search?q=mysql) [![MySQL](https://img.shields.io/badge/body--parser-1.19.0-red?rounded-square)](https://www.npmjs.com/package/body-parser) [![Morgan](https://img.shields.io/badge/morgan-1.9.1-brightgreen?style=rounded-square)](https://www.npmjs.com/package/morgan) [![CORS](https://img.shields.io/badge/cors-2.8.5-lightgrey?style=rounded-square)](https://www.npmjs.com/package/cors) [![CORS](https://img.shields.io/badge/jsonwebtoken-8.5.1-yellowgreen?style=rounded-square)](https://www.npmjs.com/package/jsonwebtoken)
+[![Express.js](https://img.shields.io/badge/express-4.17.1-yellow?style=rounded-square)](https://expressjs.com/en/starter/installing.html) [![Node.js](https://img.shields.io/badge/npm-6.9.0-greenstyle?rounded-square)](https://nodejs.org/) [![MySQL](https://img.shields.io/badge/mysql-2.17.1-blue?rounded-square)](https://www.npmjs.com/search?q=mysql) [![MySQL](https://img.shields.io/badge/body--parser-1.19.0-red?rounded-square)](https://www.npmjs.com/package/body-parser) [![Morgan](https://img.shields.io/badge/morgan-1.9.1-brightgreen?style=rounded-square)](https://www.npmjs.com/package/morgan)
 
 ## Requirements
 1. [Node JS](https://nodejs.org/en/download/)
@@ -53,9 +53,6 @@ DB_HOST = 'localhost'
 DB_USER = 'root'
 DB_PASSWORD = ''
 DB_DATABASE = 'ark_weekone'
-
-PORT = 3000
-SECRET_KEY = '270400'
 ```
 ## Setup Database
 Create Database named  **ark-weekone**  :
@@ -148,88 +145,7 @@ All API requests are made by sending a secure HTTPS request using one of the fol
 | :---- | :------------------- | :---------------------------------------------------------------------------------- |
 | `200` | `Succes`                 | The request was successful                                                          |
 | `400` | `Error`        | There was a problem with the request    |
-
-
-
 ## Endpoints
-
-#### **Homepage**
-
-- **Request** : **`GET /`**
-- **Response** :
-
-```
-    {
-    "message": "Welcome to RESTfull API for Point of Sale",
-    "author": "@Derida23",
-    "documentation": "https://github.com/Derida23/PointOfSale-ExpressJS-API",
-    "github": "github.com/Derida23"
-    }
- ```
-
-#### **Register**
-
-- **Request** : **`POST /register`**
-- **Response** :
-
-  ```
-    {
-    "status": 200,
-    "message": "The user is successfully registered!",
-    "user": {
-        "username": "admin",
-        "password": "$2a$10$ThIm7Ra5opmjcrVq.vkN3.9J8m5wUCNPfyYBKgm3c9du2/OhY17Mu"
-    }
-  }
-  ```
-
-#### **Login**
-
-- **Request** : **`POST /login`**
-- **Response** :
-```
-{
-    "status": 200,
-    "message": "Login successfully!",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hbWVuZXNpYSIsImlhdCI6MTU2NjAwNDI2Nn0.Pu71LkGJn9wYM6n_xk5qadXoH4DfoE1jIQq01iN_7u8"
-}
-```
-#### **CRUD Books Endpoint**
-* **Read All Books**
-  - **Request** : **`GET /books`**
-  - **Response** :
-```
-{
-    "status": 200,
-    "result": [
-        {
-            "title": "Wordl War II",
-            "desc": "The history of world war II",
-            "image_url": "cover world war II",
-            "released_at": "2019-08-03T17:00:00.000Z",
-            "genre": "History",
-            "status": "Not Available"
-        },
-        {
-            "title": "The Witcher",
-            "desc": "The Witcher is an action role-playing game developed by CD Projekt Red and published by Atari, based on the novel series of The Witcher by Polish author Andrzej Sapkowski.",
-            "image_url": "image the witcher",
-            "released_at": "2019-08-02T17:00:00.000Z",
-            "genre": "Novel",
-            "status": "Available"
-        },
-        {
-            "title": "Calculus",
-            "desc": "Mathematics hell",
-            "image_url": "image book math",
-            "released_at": "2019-08-01T17:00:00.000Z",
-            "genre": "Education",
-            "status": "Not Available"
-        }
-    ]
-}
-```
-
 ### A. CRUD Category Endpoint
 **1. Read All Category**
  -   **Request**  :  **`GET /category`**

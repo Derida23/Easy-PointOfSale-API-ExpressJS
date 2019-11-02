@@ -54,13 +54,14 @@ module.exports = {
   },
   putCategory: req => {
     return new Promise ((resolve, reject) => {
+      const param = req.params
       const body = req.body;
       const checkCategoryId = 'SELECT id FROM category WHERE id=?';
       const sql = 'UPDATE category SET name=? WHERE id=?';
 
-      connection.query ( checkCategoryId, [body.id],(err, response) => {
+      connection.query ( checkCategoryId, [param.id],(err, response) => {
         if (response.length > 0){
-          connection.query (sql, [body.name, body.id], (err, response) => {
+          connection.query (sql, [body.name, param.id], (err, response) => {
             if (!err) {
               resolve (response);
             } else {

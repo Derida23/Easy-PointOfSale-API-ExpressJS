@@ -14,10 +14,10 @@ server.listen(port, () => {
   console.log(`Server is running in port ${port} in ${nodeEnv} Mode`);
 });
 
+server.use(cors())
 server.use(logger('dev'));
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: false}));
-server.use(cors())
 
 server.use('/', Router);
 

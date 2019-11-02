@@ -32,7 +32,7 @@ module.exports = {
     productModel
       .postProduct (req)
       .then (response => {
-        form.success (res, 200, "Product success insert");
+        form.success (res, 200, "Success Add Product");
       })
       .catch (error => {
         form.error(res, 400, error);

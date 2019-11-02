@@ -6,7 +6,6 @@ exports.registerUser = req => {
     const body = req.body
     const pass = bcrypt.hashSync(body.password, salt);
     return new Promise((resolve, reject) => {
-
         conn.query(`INSERT INTO user SET username = ?, password = ?`,
             [body.username, pass],
             (err, result) => {
