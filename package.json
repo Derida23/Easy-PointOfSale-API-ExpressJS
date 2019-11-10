@@ -2,7 +2,7 @@
   "name": "ark-weekone",
   "version": "1.0.0",
   "description": "Task Week One",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
   },
