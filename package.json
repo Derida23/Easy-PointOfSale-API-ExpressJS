@@ -4,7 +4,7 @@
   "description": "Task Week One",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server"
+    "start": "nodemon server.js"
   },
   "author": "Derida",
   "license": "ISC",
