@@ -44,7 +44,17 @@ module.exports = {
         [name],
         (err, response) => {
           if (!err) {
-            resolve (response);
+            const id = response.insertId
+            connection.query ('SELECT * FROM category WHERE id = ?', id,
+              (err, result) => {
+                if (!err){
+                  //SELECT DATA
+                  resolve (result);
+                } else {
+                  reject (err);
+                }
+              }
+            )
           } else {
             reject (err);
           }
@@ -54,15 +64,25 @@ module.exports = {
   },
   putCategory: req => {
     return new Promise ((resolve, reject) => {
+      const param = req.params
       const body = req.body;
       const checkCategoryId = 'SELECT id FROM category WHERE id=?';
       const sql = 'UPDATE category SET name=? WHERE id=?';
 
-      connection.query ( checkCategoryId, [body.id],(err, response) => {
+      connection.query ( checkCategoryId, [param.id],(err, response) => {
         if (response.length > 0){
-          connection.query (sql, [body.name, body.id], (err, response) => {
-            if (!err) {
-              resolve (response);
+          connection.query (sql, [body.name, param.id], (err, response) => {
+            if (!err) {  console.log(response);
+              connection.query ('SELECT * FROM category WHERE id=?',param.id,
+                (err, result) => {
+                  if (!err) {
+                    // SELECT DATA
+                    resolve(result);
+                  } else {
+                    reject (err);
+                  }
+                }
+              )
             } else {
               reject (err);
             }

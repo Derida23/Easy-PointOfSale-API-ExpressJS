@@ -32,7 +32,7 @@ module.exports = {
     categoryModel
       .postCategory (req)
       .then (response => {
-        form.success (res, 200, "Category success added");
+        form.success (res, 200, response);
       })
       .catch (error => {
         form.error(res, 400, error);
@@ -42,31 +42,34 @@ module.exports = {
     categoryModel
       .putCategory (req)
       .then (response => {
-        form.success (res, 200, "Category success updated");
+        form.success (res, 200, response);
       })
       .catch (error => {
         form.error(res, 400, error);
       });
   },
   deleteCategory: (req, res) => {
+    const id = req.params.id
     categoryModel
       .getCategoryId (req)
       .then(response => {
         if (response.length > 0) {
           categoryModel
           .deleteCategory (req)
-          .then(response => {
-            form.success (res, 200, "Category succes delete");
-          })
+          .then(response => { res.json ({
+            status: 200,
+            id : id,
+            message: 'Category success delete',
+          })})
           .catch(error => {
-            form.error (res, 400, error);
+            form.error (res, 400, "Coba 1");
           })
         } else {
           form.error (res, 400, "ID Product Not Found")
         }
       })
       .catch (error => {
-        form.error(res, 400, error);
+        form.error(res, 400, "Coba 2");
       });
   },
 };

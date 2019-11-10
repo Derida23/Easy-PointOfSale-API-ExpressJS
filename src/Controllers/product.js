@@ -32,7 +32,7 @@ module.exports = {
     productModel
       .postProduct (req)
       .then (response => {
-        form.success (res, 200, "Product success insert");
+        form.success (res, 200, response);
       })
       .catch (error => {
         form.error(res, 400, error);
@@ -42,22 +42,25 @@ module.exports = {
     productModel
       .putProduct (req)
       .then (response => {
-        form.success (res, 200, "Product success update");
+        form.success (res, 200, response);
       })
       .catch (error => {
         form.error(res, 400, error);
       });
   },
   deleteProduct: (req, res) => {
+    const id = req.params.id
     productModel
       .getProductId (req)
       .then(response => {
         if (response.length > 0) {
           productModel
           .deleteProduct (req)
-          .then(response => {
-            form.success (res, 200, "Product success delete");
-          })
+          .then(response => { res.json ({
+            status: 200,
+            id : id,
+            message: 'Category success delete',
+          })})
           .catch(error => {
             form.error (res, 400, error);
           })
