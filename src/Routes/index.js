@@ -29,9 +29,9 @@ Router.get('/', (req, res) => {
     });
 })
 
-Router.use('/product',validateUser, product);
-Router.use('/category',validateUser, category);
-Router.use('/order',validateUser, order);
+Router.use('/product', product);
+Router.use('/category', category);
+Router.use('/order', order);
 Router.use('/user', user)
 
 module.exports = Router;
