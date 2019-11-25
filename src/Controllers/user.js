@@ -23,7 +23,7 @@ exports.loginUser = (req, res) => {
         if(result.length != 0){
             if(bcrypt.compareSync(req.body.password, result[0].password)){
                 const token = jwt.sign({id: result[0].id}, secretKey, {expiresIn: '10h'});
-                form.success(res, {user_id: result[0].id, username: result[0].username, token: token, login:"Success Login"});
+                form.success(res, 200, {user_id: result[0].id, username: result[0].username, token: token, login:"Success Login"});
             }else{
                 form.error(res, 400, "Password incorrect")
             }

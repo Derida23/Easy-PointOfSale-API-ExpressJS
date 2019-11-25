@@ -44,7 +44,17 @@ module.exports = {
         [name],
         (err, response) => {
           if (!err) {
-            resolve (response);
+            const id = response.insertId
+            connection.query ('SELECT * FROM category WHERE id = ?', id,
+              (err, result) => {
+                if (!err){
+                  //SELECT DATA
+                  resolve (result);
+                } else {
+                  reject (err);
+                }
+              }
+            )
           } else {
             reject (err);
           }
@@ -62,8 +72,17 @@ module.exports = {
       connection.query ( checkCategoryId, [param.id],(err, response) => {
         if (response.length > 0){
           connection.query (sql, [body.name, param.id], (err, response) => {
-            if (!err) {
-              resolve (response);
+            if (!err) {  console.log(response);
+              connection.query ('SELECT * FROM category WHERE id=?',param.id,
+                (err, result) => {
+                  if (!err) {
+                    // SELECT DATA
+                    resolve(result);
+                  } else {
+                    reject (err);
+                  }
+                }
+              )
             } else {
               reject (err);
             }

@@ -55,11 +55,20 @@ module.exports = {
       connection.query (checkCategoryId, [body.category_id],
         (err, response) => {
           if (response.length !=0 && body.price >= 0 && body.quantity >= 0){
-            connection.query (sql,
-            [body.name, body.description, body.quantity, body.image, body.price, body.category_id],
+            connection.query (sql, [body.name, body.description, body.quantity, body.image, body.price, body.category_id],
             (err, response) => {
               if (!err) {
-                resolve (response);
+                const id = response.insertId
+                connection.query ('SELECT product.id, product.name, product.description, product.quantity, product.image, product.price, category.name AS category_name, product.date_add, product.date_update FROM product INNER JOIN category ON product.category_id = category.id WHERE product.id=?', id,
+                  (err, result) => {
+                    if (!err) {
+                        //SELECT DATA
+                        resolve (result);
+                      } else {
+                        reject (err);
+                      }
+                    }
+                  )
               } else {
                 reject (err);
               }
@@ -89,7 +98,15 @@ module.exports = {
             [body.name, body.description, body.quantity, body.image, body.price, body.category_id, param.id],
             (err, response) => {
               if (!err) {
-                resolve (response);
+                connection.query ('SELECT product.id, product.name, product.description, product.quantity, product.image, product.price, category.name AS category_name, product.date_add, product.date_update FROM product INNER JOIN category ON product.category_id = category.id WHERE product.id=?', param.id,
+                  (err, result) => {
+                    if (!err) {
+                      resolve(result)
+                    } else {
+                      reject (err)
+                    }
+                  }
+                )
               } else {
                 reject (err);
                 console.log(err);
