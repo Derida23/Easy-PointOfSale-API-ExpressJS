@@ -1,4 +1,4 @@
-<h1 align="center"> POINT OF SALE API </h1>
+<h1 align="center"> POINT OF SALE API </h1> 
 Point of Sale API is an API that allows users to access cashier systems such as product items, product categories, and product quantities. The Point of Sale API also allows users to create, update and delete products and quantities to or from the database.
 
 There are several features included in the API that allow users to search data by name, order or sorting by product name, category and date update, and reduce or add quantity
